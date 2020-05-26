@@ -5,6 +5,7 @@ import {
   Pano,
   Text,
   View,
+  Box
 } from 'react-vr';
 
 export default class StarterVR extends React.Component {
@@ -12,6 +13,7 @@ export default class StarterVR extends React.Component {
     return (
       <View>
         <Pano source={asset('chess-world.jpg')}/>
+        <Box dimWidth={0.35} dimHeight={0.35} dimHeight={0.35} wireframe={true} />
         <Text
           style={{
             backgroundColor: '#777879',
