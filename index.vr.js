@@ -5,15 +5,44 @@ import {
   Pano,
   Text,
   View,
-  Box
+  Box,
+  VrButton
 } from 'react-vr';
 
 export default class StarterVR extends React.Component {
+  constructor(){
+    super();
+    this.state ={buttonText: "Default Button"};
+  }
+  triggerEnter(){
+    this.setState({buttonText: "Mouse Entered"});
+  }
+  triggerExit(){
+    this.setState({buttonText: "Default"});
+  }
   render() {
     return (
       <View>
         <Pano source={asset('chess-world.jpg')}/>
-        <Box dimWidth={0.35} dimHeight={0.35} dimHeight={0.35} wireframe={true} />
+        {/* <Box
+dimWidth={0.35}
+dimDepth={0.35}
+dimHeight={0.35}
+     
+
+ texture={asset("chess-world.jpg ")}
+             style={{
+          color: 'white',
+          transform: [{translate: [0,0,-2]}, {rotateX: 45},{rotateY: 50},{scale: [2,0.7,1.5]}],
+        }}
+
+      /> */}
+      <VrButton
+      onEnter ={this.triggerEnter.bind(this)}
+      onExit ={this.triggerExit.bind(this)}
+      > 
+
+      
         <Text
           style={{
             backgroundColor: '#777879',
@@ -26,8 +55,9 @@ export default class StarterVR extends React.Component {
             textAlignVertical: 'center',
             transform: [{translate: [0, 0, -3]}],
           }}>
-          hello
+         {this.state.buttonText}
         </Text>
+        </VrButton>
       </View>
     );
   }
